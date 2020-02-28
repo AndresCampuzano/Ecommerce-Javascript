@@ -82,6 +82,9 @@ function filterByCost(value) {
     return x.price === value; // Makes a new Array.
   });
   console.log(articulosFiltrados);
+  if (articulosFiltrados.length === 0) {
+     return alert(`There are not products with the price of ${value}`)
+  }
 
   function renderFilteredProducts() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
