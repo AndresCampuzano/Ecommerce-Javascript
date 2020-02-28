@@ -65,25 +65,21 @@ function makeList() {
   }
 }
 makeList();
-
-//Filtering products by cost
+// Getting input from user
 function getInputFromUser() {
   var x = document.getElementById("userInputFilterCost").value
-  if (x === "" || x === null) {
-    alert("please type a number")
-    return
-  }
   x = parseInt(x)
- return filterByCost(x)
+  return filterByCost(x)
 };
 
+//Filtering products by cost
 function filterByCost(value) {
   var articulosFiltrados = productsArray.filter(function(x) {
     return x.price === value; // Makes a new Array.
   });
   console.log(articulosFiltrados);
   if (articulosFiltrados.length === 0) {
-     return alert(`There are not products with the price of ${value}`)
+     return alert(`There are not products with chosen filter, please try again`)
   }
 
   function renderFilteredProducts() {
