@@ -17,11 +17,14 @@
         <div class="parent">
             <div class="div1">
                <div class="leftNavbar">
-                   xxx
+                   <h1>Filter by cost</h1>
+                   <input type="text" placeholder="try 22" autofocus id="userInputFilterCost">
+                   <button type="button" onclick="filterByCost();">SUBMIT</button>
                </div>
             </div>
             <div class="div2"> 
-                <div id="showProducts" class="showProducts">
+                <div id="showProducts">
+                    <div id="allProducts"></div>
                 </div>
             </div>
         </div>
