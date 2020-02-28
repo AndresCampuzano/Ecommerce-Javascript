@@ -67,17 +67,26 @@ function makeList() {
 makeList();
 
 //Filtering products by cost
-//TODO: change 22 for a real input from user
-function filterByCost() {
+function getInputFromUser() {
+  var x = document.getElementById("userInputFilterCost").value
+  if (x === "" || x === null) {
+    alert("please type a number")
+    return
+  }
+  x = parseInt(x)
+ return filterByCost(x)
+};
+
+function filterByCost(value) {
   var articulosFiltrados = productsArray.filter(function(x) {
-    return x.price === 22; //genera objetos. Trae: nombre, costo
+    return x.price === value; // Makes a new Array.
   });
   console.log(articulosFiltrados);
 
   function renderFilteredProducts() {
-    var x = document.getElementById("allProducts")
-    x.remove("allProducts"); // Removing "allProducts"
-
+    document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProducts"></div>` // Creating "filteredProducts", this line needs to be improved
+    
     for (let i = 0; i < articulosFiltrados.length; i++) {
       var listItem = document.createElement("div");
       listItem.innerHTML = `
@@ -89,7 +98,7 @@ function filterByCost() {
               <p>Color: ${articulosFiltrados[i].color}</p>
           </div>
       `;
-      document.getElementById("showProducts").appendChild(listItem);
+      document.getElementById("filteredProducts").appendChild(listItem);
     }
 
   }
