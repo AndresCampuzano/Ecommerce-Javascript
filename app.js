@@ -1,7 +1,7 @@
 let productsArray = [
   {
     id: 1,
-    name: "SPACEX T-SHIRT",
+    name: "spacex t-shirt",
     product: "shirt",
     price: 22,
     color: "black",
@@ -9,7 +9,7 @@ let productsArray = [
   },
   {
     id: 2,
-    name: "STARMAN T-SHIRT",
+    name: "starman t-shirt",
     product: "shirt",
     price: 22,
     color: "black",
@@ -17,7 +17,7 @@ let productsArray = [
   },
   {
     id: 3,
-    name: "SPACEX T-SHIRT",
+    name: "spacex t-shirt",
     product: "shirt",
     price: 22,
     color: "blue",
@@ -25,7 +25,7 @@ let productsArray = [
   },
   {
     id: 4,
-    name: "SPACEX CAP",
+    name: "spacex cap",
     product: "cap",
     price: 10,
     color: "black",
@@ -33,7 +33,7 @@ let productsArray = [
   },
   {
     id: 5,
-    name: "SPACEX CAP",
+    name: "spacex cap",
     product: "cap",
     price: 10,
     color: "blue",
@@ -41,7 +41,7 @@ let productsArray = [
   },
   {
     id: 6,
-    name: "SPACEX CAP",
+    name: "spacex cap",
     product: "cap",
     price: 10,
     color: "blue",
@@ -49,7 +49,7 @@ let productsArray = [
   },
   {
     id: 7,
-    name: "OCCUPY MARS MUG",
+    name: "occupy mars mug",
     product: "mug",
     price: 12,
     color: "black",
@@ -57,7 +57,7 @@ let productsArray = [
   },
   {
     id: 8,
-    name: "OCCUPY EARTH MUG",
+    name: "occupy earth mug",
     product: "mug",
     price: 12,
     color: "black",
@@ -65,7 +65,7 @@ let productsArray = [
   },
   {
     id: 9,
-    name: "SPACEX MUG",
+    name: "spacex mug",
     product: "mug",
     price: 12,
     color: "black",
@@ -74,6 +74,8 @@ let productsArray = [
 ];
 
 function makeList() {
+  document.getElementById("showProducts").innerHTML = `<div id="allProducts"></div>`//Creating "allProducts"
+  console.log(productsArray);
   for (let i = 0; i < productsArray.length; i++) {
     var listItem = document.createElement("div");
     listItem.innerHTML = `
@@ -83,6 +85,7 @@ function makeList() {
             <p>${productsArray[i].product}</p>
             <p>Price $${productsArray[i].price}</p>
             <p>Color: ${productsArray[i].color}</p>
+            <button type="button" class="btn btn-primary">Buy</button>
         </div>
     `;
     document.getElementById("allProducts").appendChild(listItem);
@@ -92,6 +95,7 @@ function makeList() {
 
 // Getting input from user
 function getInputFromUser() {
+  makeListAgain() // rendering all data again
   var x = document.getElementById("userInputFilterCost").value
   x = parseInt(x)
   return filterByCost(x)
@@ -107,7 +111,7 @@ function filterByCost(value) {
      return alert(`There are not products with chosen filter, please try again`)
   }
 
-  function renderFilteredProducts() {
+  function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
     document.getElementById("showProducts").innerHTML = `<div id="filteredProducts"></div>` // Creating "filteredProducts", this line needs to be improved
     
@@ -120,18 +124,20 @@ function filterByCost(value) {
               <p>${productsFilteredArray[i].product}</p>
               <p>Price $${productsFilteredArray[i].price}</p>
               <p>Color: ${productsFilteredArray[i].color}</p>
+              <button type="button" class="btn btn-primary">Buy</button>
           </div>
       `;
       document.getElementById("filteredProducts").appendChild(listItem);
     }
 
   }
-  renderFilteredProducts();
+  render();
 }
 
 
 // Getting input from user
 function getInputFromUserByRange() {
+  makeListAgain() // rendering all data again
   var one = document.getElementById("userInputFilterCostOne").value
   one = parseInt(one)
 	var two = document.getElementById("userInputFilterCostTwo").value
@@ -150,7 +156,7 @@ function filterByCostByRange(one, two) {
      return alert(`There are not products with chosen filter, please try again`)
   }
 	
-	function renderFilteredProductsByRange() {
+	function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
     document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByRange"></div>` // Creating "filteredProductsByRange", this line needs to be improved
     
@@ -163,17 +169,19 @@ function filterByCostByRange(one, two) {
               <p>${productsFilteredArray[i].product}</p>
               <p>Price $${productsFilteredArray[i].price}</p>
               <p>Color: ${productsFilteredArray[i].color}</p>
+              <button type="button" class="btn btn-primary">Buy</button>
           </div>
       `;
       document.getElementById("filteredProductsByRange").appendChild(listItem);
     }
 
   }
-  renderFilteredProductsByRange();
+  render();
 }
 
 //Getting input from dropbox
 function getInputFromUserOption() {
+  makeListAgain() // rendering all data again
   var optionValue = document.getElementById("mySelect").value;
 	return filterByOption(optionValue);
 }
@@ -184,7 +192,7 @@ function filterByOption(optionValue) {
   })
   console.log(productsFilteredArray);
 
-  function renderFilteredProducts() {
+  function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
     document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByOptions"></div>` // Creating "filteredProductsByOptions", this line needs to be improved
     
@@ -197,12 +205,55 @@ function filterByOption(optionValue) {
               <p>${productsFilteredArray[i].product}</p>
               <p>Price $${productsFilteredArray[i].price}</p>
               <p>Color: ${productsFilteredArray[i].color}</p>
+              <button type="button" class="btn btn-primary">Buy</button>
           </div>
       `;
       document.getElementById("filteredProductsByOptions").appendChild(listItem);
     }
 
   }
-  renderFilteredProducts();
+  render();
 }
 
+
+// Getting input search bar
+function getInputFromUserFilterByName() {
+  makeListAgain() // rendering all data again
+  var x = document.getElementById("userInputFilterByName").value
+  value = x.toLowerCase();
+  return filterByName(value)
+}
+
+function filterByName(value) {
+  var productsFilteredArray = productsArray.filter(function (x) {
+    return x.name.includes(value) 
+  })
+  console.log(productsFilteredArray);
+
+  function render() {
+    document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByOptions"></div>` // Creating "filteredProductsByOptions", this line needs to be improved
+    
+    for (let i = 0; i < productsFilteredArray.length; i++) {
+      var listItem = document.createElement("div");
+      listItem.innerHTML = `
+          <div class="product">
+              <h1>${productsFilteredArray[i].name}</h1>
+              <img src=${productsFilteredArray[i].image} alt="">
+              <p>${productsFilteredArray[i].product}</p>
+              <p>Price $${productsFilteredArray[i].price}</p>
+              <p>Color: ${productsFilteredArray[i].color}</p>
+              <button type="button" class="btn btn-primary">Buy</button>
+          </div>
+      `;
+      document.getElementById("filteredProductsByOptions").appendChild(listItem);
+    }
+
+  }
+  render();
+}
+
+//Rendering all data again
+function makeListAgain() {
+  makeList();
+}
