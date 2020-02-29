@@ -53,15 +53,15 @@ let productsArray = [
     product: "mug",
     price: 12,
     color: "black",
-    image: "https://cdn.shopify.com/s/files/1/0261/2615/5855/products/Mug_Occupy_Mars_SPXTERRAMUG_FRONT-B_800x.png?v=1567192143"
+    image: "https://andrescampuzano.github.io/Ecommerce-Javascript/assets/img/spacex_mug_mars.webp"
   },
   {
     id: 8,
-    name: "OCCUPY MARS MUG",
+    name: "OCCUPY EARTH MUG",
     product: "mug",
     price: 12,
     color: "black",
-    image: "https://cdn.shopify.com/s/files/1/0261/2615/5855/products/Mug_Occupy_Mars_SPXTERRAMUG_FRONT-A_800x.png?v=1567192149"
+    image: "https://andrescampuzano.github.io/Ecommerce-Javascript/assets/img/spacex_mug_earth.webp"
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ let productsArray = [
     product: "mug",
     price: 12,
     color: "black",
-    image: "https://cdn.shopify.com/s/files/1/0261/2615/5855/products/Mug_Occupy_Mars_SPXTERRAMUG_BACK_800x.png?v=1567192155"
+    image: "https://andrescampuzano.github.io/Ecommerce-Javascript/assets/img/spacex_mug_normal.webp"
   },
 ];
 
@@ -172,7 +172,37 @@ function filterByCostByRange(one, two) {
   renderFilteredProductsByRange();
 }
 
-function myFunction() {
-  var x = document.getElementById("mySelect").value;
-	console.log(x)
+//Getting input from dropbox
+function getInputFromUserOption() {
+  var optionValue = document.getElementById("mySelect").value;
+	return filterByOption(optionValue);
 }
+
+function filterByOption(optionValue) {
+  var productsFilteredArray = productsArray.filter(function(x) {
+    return x.product === optionValue; // Makes a new Array.
+  })
+  console.log(productsFilteredArray);
+
+  function renderFilteredProducts() {
+    document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByOptions"></div>` // Creating "filteredProductsByOptions", this line needs to be improved
+    
+    for (let i = 0; i < productsFilteredArray.length; i++) {
+      var listItem = document.createElement("div");
+      listItem.innerHTML = `
+          <div class="product">
+              <h1>${productsFilteredArray[i].name}</h1>
+              <img src=${productsFilteredArray[i].image} alt="">
+              <p>${productsFilteredArray[i].product}</p>
+              <p>Price $${productsFilteredArray[i].price}</p>
+              <p>Color: ${productsFilteredArray[i].color}</p>
+          </div>
+      `;
+      document.getElementById("filteredProductsByOptions").appendChild(listItem);
+    }
+
+  }
+  renderFilteredProducts();
+}
+
