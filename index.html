@@ -16,13 +16,27 @@
 
         <div class="parent">
             <div class="div1">
-               <div class="leftNavbar">
-                   <h1>Filter by cost</h1>
-                   <input type="text" placeholder="try 22" autofocus id="userInputFilterCost">
-                   <button type="button" onclick="getInputFromUser();">SUBMIT</button>
-               </div>
+                <div class="leftNavbar">
+                    <h2>Filter by cost</h2>
+                    <input type="text" placeholder="try 22" autofocus id="userInputFilterCost">
+                    <button type="button" onclick="getInputFromUser();">SUBMIT</button>
+                    <h2>Filter by cost between two values</h2>
+                    <input type="text" placeholder="try 10" autofocus id="userInputFilterCostOne">
+                    <input type="text" placeholder="try 12" autofocus id="userInputFilterCostTwo">
+                    <button type="button" onclick="getInputFromUserByRange();">SUBMIT</button>
+                    <h2>Filter by product (Not working for now)</h2>
+                    <form>
+                        <select id="mySelect">
+                            <option value="apple">Apple</option>
+                            <option value="orange">Orange</option>
+                            <option value="pineapple">Pineapple</option>
+                            <option value="banana">Banana</option>
+                        </select>
+                    </form>
+                    <button type="button" onclick="myFunction()">Try it</button>
+                </div>
             </div>
-            <div class="div2"> 
+            <div class="div2">
                 <div id="showProducts">
                     <div id="allProducts"></div>
                 </div>
