@@ -255,5 +255,6 @@ function filterByName(value) {
 
 //Rendering all data again
 function makeListAgain() {
+  console.log('rendering all data again');
   makeList();
 }
