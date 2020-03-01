@@ -108,7 +108,7 @@ function filterByCost(value) {
   });
   console.log(productsFilteredArray);
   if (productsFilteredArray.length === 0) {
-     return alert(`There are not products with chosen filter, please try again`)
+     return alert(`No products found, please try again.`)
   }
 
   function render() {
@@ -153,7 +153,7 @@ function filterByCostByRange(one, two) {
   });
 	console.log(productsFilteredArray)
 	if (productsFilteredArray.length === 0) {
-     return alert(`There are not products with chosen filter, please try again`)
+     return alert(`There are not products that range, please try again.`)
   }
 	
 	function render() {
@@ -191,6 +191,9 @@ function filterByOption(optionValue) {
     return x.product === optionValue; // Makes a new Array.
   })
   console.log(productsFilteredArray);
+		if (productsFilteredArray.length === 0) {
+     return alert(`Error. Please try again.`)
+  }
 
   function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
@@ -229,6 +232,9 @@ function filterByName(value) {
     return x.name.includes(value) 
   })
   console.log(productsFilteredArray);
+	if (productsFilteredArray.length === 0) {
+     return alert(`No products found, please try again.`)
+  }
 
   function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
@@ -257,4 +263,77 @@ function filterByName(value) {
 function makeListAgain() {
   console.log('rendering all data again');
   makeList();
+}
+
+
+// Sorting the products by proce in descending order 
+// Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
+function getInputFromUserFilterDescending() {
+  makeListAgain() // rendering all data again
+
+  var copyProductsArray = [...productsArray] //Makes a copy of the Array productsArray
+  copyProductsArray.sort(function (a, b) {
+    return a.price - b.price;
+  })
+  // console.log(copyProductsArray);
+  function render() {
+    document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByDescending"></div>` // Creating "filteredProductsByDescending", this line needs to be improved
+    
+    for (let i = 0; i < copyProductsArray.length; i++) {
+      var listItem = document.createElement("div");
+      listItem.innerHTML = `
+          <div class="product">
+              <h1>${copyProductsArray[i].name}</h1>
+              <img src=${copyProductsArray[i].image} alt="">
+              <p>${copyProductsArray[i].product}</p>
+              <p>Price $${copyProductsArray[i].price}</p>
+              <p>Color: ${copyProductsArray[i].color}</p>
+              <button type="button" class="btn btn-primary">Buy</button>
+          </div>
+      `;
+      document.getElementById("filteredProductsByDescending").appendChild(listItem);
+    }
+
+  }
+  render();
+
+}
+
+// getInputFromUserFilterAscending
+
+// Sorting the products by proce in descending order 
+// Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
+function getInputFromUserFilterAscending() {
+  makeListAgain() // rendering all data again
+
+  var copyProductsArray = [...productsArray] //Makes a copy of the Array productsArray
+  copyProductsArray.sort(function (a, b) {
+    return b.price - a.price;
+  })
+  // console.log(copyProductsArray);
+  function render() {
+    document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByAscending"></div>` // Creating "filteredProductsByDescending", this line needs to be improved
+    
+    for (let i = 0; i < copyProductsArray.length; i++) {
+      var listItem = document.createElement("div");
+      listItem.innerHTML = `
+          <div class="product">
+              <h1>${copyProductsArray[i].name}</h1>
+              <img src=${copyProductsArray[i].image} alt="">
+              <p>${copyProductsArray[i].product}</p>
+              <p>Price $${copyProductsArray[i].price}</p>
+              <p>Color: ${copyProductsArray[i].color}</p>
+              <button type="button" class="btn btn-primary">Buy</button>
+          </div>
+      `;
+      document.getElementById("filteredProductsByAscending").appendChild(listItem);
+    }
+
+  }
+  render();
+
 }
