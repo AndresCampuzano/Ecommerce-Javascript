@@ -89,6 +89,7 @@ function makeList() {
         </div>
     `;
     document.getElementById("allProducts").appendChild(listItem);
+    addEventClick(listItem, i); // TEST MODAL
   }
 } makeList();
 
@@ -301,9 +302,7 @@ function getInputFromUserFilterDescending() {
 
 }
 
-// getInputFromUserFilterAscending
-
-// Sorting the products by proce in descending order 
+// Sorting the products by proce in ascending order 
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
 function getInputFromUserFilterAscending() {
@@ -337,3 +336,14 @@ function getInputFromUserFilterAscending() {
   render();
 
 }
+
+
+// TEST MODAL:
+
+function addEventClick($element, i) { //modal
+  $element.addEventListener('click', () => {
+     console.log(`click ${productsArray[i].name}, ${productsArray[i].product}, ${productsArray[i].price}, ${productsArray[i].color}`);
+    
+  });
+};
+
