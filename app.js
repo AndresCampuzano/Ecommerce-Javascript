@@ -82,7 +82,7 @@ function makeList() {
     listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
     listItem.innerHTML = `
             <div>
-                <figure class="card card-product-grid">
+                <figure class="card card-product-grid" data-toggle="modal" data-target="#exampleModalCenter">
                     <div class="img-wrap">
                         <span class="badge badge-warning"> NEW </span>
                         <img src=${productsArray[i].image} alt="${productsArray[i].name}" width="100%">
@@ -130,7 +130,7 @@ function filterByCost(value) {
       listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
             <div>
-                <figure class="card card-product-grid">
+                <figure class="card card-product-grid" data-toggle="modal" data-target="#exampleModalCenter">
                     <div class="img-wrap">
                         <span class="badge badge-warning"> NEW </span>
                         <img src=${productsFilteredArray[i].image} alt="${productsFilteredArray[i].name}" width="100%">
@@ -184,7 +184,7 @@ function filterByCostByRange(one, two) {
       listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
             <div>
-                <figure class="card card-product-grid">
+                <figure class="card card-product-grid" data-toggle="modal" data-target="#exampleModalCenter">
                     <div class="img-wrap">
                         <span class="badge badge-warning"> NEW </span>
                         <img src=${productsFilteredArray[i].image} alt="${productsFilteredArray[i].name}" width="100%">
@@ -232,7 +232,7 @@ function filterByOption(optionValue) {
       listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
             <div>
-                <figure class="card card-product-grid">
+                <figure class="card card-product-grid" data-toggle="modal" data-target="#exampleModalCenter">
                     <div class="img-wrap">
                         <span class="badge badge-warning"> NEW </span>
                         <img src=${productsFilteredArray[i].image} alt="${productsFilteredArray[i].name}" width="100%">
@@ -282,7 +282,7 @@ function filterByName(value) {
       listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
             <div>
-                <figure class="card card-product-grid">
+                <figure class="card card-product-grid" data-toggle="modal" data-target="#exampleModalCenter">
                     <div class="img-wrap">
                         <span class="badge badge-warning"> NEW </span>
                         <img src=${productsFilteredArray[i].image} alt="${productsFilteredArray[i].name}" width="100%">
@@ -332,7 +332,7 @@ function getInputFromUserFilterDescending() {
       listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
             <div>
-                <figure class="card card-product-grid">
+                <figure class="card card-product-grid" data-toggle="modal" data-target="#exampleModalCenter">
                     <div class="img-wrap">
                         <span class="badge badge-warning"> NEW </span>
                         <img src=${copyProductsArray[i].image} alt="${copyProductsArray[i].name}" width="100%">
@@ -376,7 +376,7 @@ function getInputFromUserFilterAscending() {
       listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
             <div>
-                <figure class="card card-product-grid">
+                <figure class="card card-product-grid" data-toggle="modal" data-target="#exampleModalCenter">
                     <div class="img-wrap">
                         <span class="badge badge-warning"> NEW </span>
                         <img src=${copyProductsArray[i].image} alt="${copyProductsArray[i].name}" width="100%">
@@ -403,11 +403,43 @@ function countItems(number) {
 }
 
 
-// TEST MODAL:
+// MODAL:
 
-function addEventClick($element, i, arrayData) { //modal
+function addEventClick($element, i, arrayData) {
   $element.addEventListener('click', () => {
       console.log(`click ${arrayData[i].name}, ${arrayData[i].product}, ${arrayData[i].price}, ${arrayData[i].color}`);
+      document.getElementById('showModal').innerHTML = `
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">${arrayData[i].name.toUpperCase()}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- product content -->
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-warning"> NEW </span>
+                        <img src=${arrayData[i].image} alt="${arrayData[i].name}" width="100%">
+                        <h3 class="h4">${arrayData[i].name.toUpperCase()}</h3>
+                        <h3 class="h6">Product type: ${arrayData[i].product}</h3>
+                        <h3 class="h6">Color: ${arrayData[i].color}</h3>
+                        <h3 class="h6">Price: $${arrayData[i].price}</h3>
+                    </div>
+                </figure>
+                <!-- end product content -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Buy</button>
+            </div>
+            </div>
+        </div>
+    </div>
+      `
   });
 };
 
