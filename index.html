@@ -6,60 +6,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> -->
 </head>
 
 <body>
     <div class="app">
 
-
-
-        <div class="parent">
-            <div class="div1">
-                <div class="leftNavbar">
-                    <button type="button" onclick="getInputFromUserFilterDescending()" class="btn btn-primary">LOWEST PRICE</button>
-                    <br>
-                    <button type="button" onclick="getInputFromUserFilterAscending()" class="btn btn-primary">HIGHEST PRICE</button>
-                    <h2>Filter by cost</h2>
-                    <input type="text" placeholder="try 22" id="userInputFilterCost">
-                    <button type="button" onclick="getInputFromUser();" class="btn btn-primary">FILTER</button>
-                    <h2>Filter by cost between two values</h2>
-                    <input type="text" placeholder="try 10" id="userInputFilterCostOne">
-                    <input type="text" placeholder="try 12" id="userInputFilterCostTwo">
-                    <button type="button" onclick="getInputFromUserByRange();" class="btn btn-primary">FILTER</button>
-                    <h2>Filter by product</h2>
-                    <form>
-                        <select id="mySelect">
-                            <option value="shirt">Shirts</option>
-                            <option value="cap">Caps</option>
-                            <option value="mug">Mugs</option>
-                        </select>
-                    </form>
-                    <button type="button" onclick="getInputFromUserOption()" class="btn btn-primary">FILTER</button>
-                    <br>
-                    <button type="button" onclick="makeListAgain()" class="btn btn-success">LIST ALL PRODUCTS</button>
-                    <h2>Filter by name</h2>
-                    <input type="text" placeholder="try spacex or earth" id="userInputFilterByName">
-                    <button type="button" onclick="getInputFromUserFilterByName()" class="btn btn-primary">FILTER</button>
+        <header class="section-header pb-4">
+            <section class="header-main border-bottom">
+                <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2 col-4">
+                    <h1 class="h3" onclick="makeListAgain()" style="cursor: pointer;">Array Store</h1>
                 </div>
-            </div>
-            <div class="div2">
-                <div id="showProducts">
+                <div class="col-lg-6 col-sm-12">
+                    <form action="#" class="search">
+                        <div class="input-group w-100">
+                            <input type="text" class="form-control" placeholder="Search" id="userInputFilterByName">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" onclick="getInputFromUserFilterByName()">
+                                <i class="fa fa-search">Search</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form> <!-- search-wrap .end// -->
+                </div> <!-- col.// -->
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="widgets-wrap float-md-right">
+                        <div class="widget-header  mr-3">
+                            <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
+                            <span class="badge badge-pill badge-danger notify">5</span>
+                        </div>
+                        <div class="widget-header icontext">
+                            <div class="text">
+                                <span class="text-muted">Welcome!</span>
+                                <div>
+                                    <a href="#">Sign in</a> |  
+                                    <a href="#"> Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- widgets-wrap.// -->
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+                </div> <!-- container.// -->
+            </section> <!-- header-main .// -->
+            </header>
 
-                    <!-- These div's will be created by app.js -->
-
-                    <!-- <div id="allProducts"></div> -->
-                    <!-- <div id="filteredProducts"></div> -->
-                    <!-- <div id="filteredProductsByRange"></div> -->
-                    <!-- <div id="filteredProductsByOptions"></div> -->
-                    <!-- <div id="filteredProductsByDescending"></div> -->
-                    <!-- <div id="filteredProductsByAscending"></div> -->
-
-                </div>
-            </div>
-        </div>
     </div>
+
+
+    <!-- ---- -->
+
+    <section class="section-content padding-y">
+        <div class="container">
+
+        <div class="row">
+            <aside class="col-md-3">
+
+        <div class="card">
+            <article class="filter-group">
+                <header class="card-header">
+                    <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+                        <i class="icon-control fa fa-chevron-down"></i>
+                        <h6 class="title">Product type</h6>
+                    </a>
+                </header>
+                <div class="filter-content collapse show" id="collapse_1" style="">
+                    <div class="card-body">
+                        <!-- <form class="pb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search" id="userInputFilterByName">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" onclick="getInputFromUserFilterByName()">
+                                        <i class="fa fa-search">00</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form> -->
+
+                        <ul class="list-menu">
+                        <li><a>Mug</a></li>
+                        <li><a>T-shirts</a></li>
+                        <li><a>Caps</a></li>
+                        </ul>
+
+                    </div> <!-- card-body.// -->
+                </div>
+            </article> <!-- filter-group  .// -->
+
+            <article class="filter-group">
+                <header class="card-header">
+                    <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
+                        <i class="icon-control fa fa-chevron-down"></i>
+                        <h6 class="title">Price range </h6>
+                    </a>
+                </header>
+                <div class="filter-content collapse show" id="collapse_3" style="">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label>Price</label>
+                                <input class="form-control" placeholder="$0" type="number" id="userInputFilterCost">
+                            </div>
+                            <button class="btn btn-block btn-primary" onclick="getInputFromUser();">Apply by Price</button>
+                            <div class="form-group col-md-6">
+                                <label>Min</label>
+                                <input class="form-control" placeholder="$0" type="number" id="userInputFilterCostOne">
+                            </div>
+                            <div class="form-group text-right col-md-6">
+                                <label>Max</label>
+                                <input class="form-control" placeholder="$1,0000" type="number" id="userInputFilterCostTwo">
+                            </div>
+                        </div> <!-- form-row.// -->
+                            <button class="btn btn-block btn-primary" onclick="getInputFromUserByRange();">Apply by Range</button>
+                            <button class="btn btn-block btn-primary" onclick="getInputFromUserFilterDescending()">Lowest Price</button>
+                            <button class="btn btn-block btn-primary" onclick="getInputFromUserFilterAscending()">Highest Price</button>
+                            <button class="btn btn-block btn-success" onclick="makeListAgain()">Show All Products</button>
+                    </div><!-- card-body.// -->
+                </div>
+            </article> <!-- filter-group .// -->
+
+
+        </div> <!-- card.// -->
+
+            </aside> <!-- col.// -->
+            <main class="col-md-9">
+
+        <header class="border-bottom mb-4 pb-3">
+                <div class="form-inline">
+                    <span class="mr-md-auto" id="numberItems">90 Items found</span>
+                    <select class="mr-2 form-control" id="mySelect">
+                        <option value="shirt">Shirts</option>
+                        <option value="cap">Caps</option>
+                        <option value="mug">Mugs</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" onclick="getInputFromUserOption()">
+                        <i class="fa fa-search">Search</i>
+                        </button>
+                    </div>
+                </div>
+        </header><!-- sect-heading -->
+
+        <!-- <div class="row"> -->
+
+
+                <div class="row">
+                    <div id="showProducts">
+                        <!-- These div's will be created by app.js -->
+                        <!-- <div id="allProducts"></div> -->
+                        <!-- <div id="filteredProducts"></div> -->
+                        <!-- <div id="filteredProductsByRange"></div> -->
+                        <!-- <div id="filteredProductsByOptions"></div> -->
+                        <!-- <div id="filteredProductsByDescending"></div> -->
+                        <!-- <div id="filteredProductsByAscending"></div> -->
+                    </div>
+                </div>
+
+        <!-- </div>  -->
+        <!-- row products.// -->
+
+
+        <nav class="mt-4" aria-label="Page navigation sample">
+            <ul class="pagination">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+
+            </main> <!-- col.// -->
+
+        </div>
+
+        </div> <!-- container .//  -->
+        </section>
+        
+
+    <!-- --- -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

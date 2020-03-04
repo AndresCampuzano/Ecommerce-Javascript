@@ -74,22 +74,29 @@ let productsArray = [
 ];
 
 function makeList() {
-  document.getElementById("showProducts").innerHTML = `<div id="allProducts"></div>`//Creating "allProducts"
+  document.getElementById("showProducts").innerHTML = `<div id="allProducts" class="row"></div>`//Creating "allProducts"
   console.log(productsArray);
+  countItems(productsArray.length)
   for (let i = 0; i < productsArray.length; i++) {
     var listItem = document.createElement("div");
+    listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
     listItem.innerHTML = `
-        <div class="product">
-            <h1>${productsArray[i].name}</h1>
-            <img src=${productsArray[i].image} alt="">
-            <p>${productsArray[i].product}</p>
-            <p>Price $${productsArray[i].price}</p>
-            <p>Color: ${productsArray[i].color}</p>
-            <button type="button" class="btn btn-primary">Buy</button>
-        </div>
-    `;
+            <div>
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-warning"> NEW </span>
+                        <img src=${productsArray[i].image} alt="${productsArray[i].name}" width="100%">
+                        <h3 class="h4">${productsArray[i].name.toUpperCase()}</h3>
+                        <h3 class="h6">Product type: ${productsArray[i].product}</h3>
+                        <h3 class="h6">Color: ${productsArray[i].color}</h3>
+                        <h3 class="h6">Price: $${productsArray[i].price}</h3>
+                    </div>
+                    <button href="#" class="btn btn-block btn-primary">Show info</button>
+                </figure>
+            </div>
+            `;
     document.getElementById("allProducts").appendChild(listItem);
-    addEventClick(listItem, i); // TEST MODAL
+    addEventClick(listItem, i, productsArray); // TEST MODAL
   }
 } makeList();
 
@@ -114,21 +121,30 @@ function filterByCost(value) {
 
   function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
-    document.getElementById("showProducts").innerHTML = `<div id="filteredProducts"></div>` // Creating "filteredProducts", this line needs to be improved
-    
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProducts" class="row"></div>` // Creating "filteredProducts", this line needs to be improved
+
+    countItems(productsFilteredArray.length)
+
     for (let i = 0; i < productsFilteredArray.length; i++) {
       var listItem = document.createElement("div");
+      listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
-          <div class="product">
-              <h1>${productsFilteredArray[i].name}</h1>
-              <img src=${productsFilteredArray[i].image} alt="">
-              <p>${productsFilteredArray[i].product}</p>
-              <p>Price $${productsFilteredArray[i].price}</p>
-              <p>Color: ${productsFilteredArray[i].color}</p>
-              <button type="button" class="btn btn-primary">Buy</button>
-          </div>
+            <div>
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-warning"> NEW </span>
+                        <img src=${productsFilteredArray[i].image} alt="${productsFilteredArray[i].name}" width="100%">
+                        <h3 class="h4">${productsFilteredArray[i].name.toUpperCase()}</h3>
+                        <h3 class="h6">Product type: ${productsFilteredArray[i].product}</h3>
+                        <h3 class="h6">Color: ${productsFilteredArray[i].color}</h3>
+                        <h3 class="h6">Price: $${productsFilteredArray[i].price}</h3>
+                    </div>
+                    <button href="#" class="btn btn-block btn-primary">Show info</button>
+                </figure>
+            </div>
       `;
       document.getElementById("filteredProducts").appendChild(listItem);
+      addEventClick(listItem, i, productsFilteredArray); // TEST MODAL
     }
 
   }
@@ -159,21 +175,30 @@ function filterByCostByRange(one, two) {
 	
 	function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
-    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByRange"></div>` // Creating "filteredProductsByRange", this line needs to be improved
-    
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByRange" class="row"></div>` // Creating "filteredProductsByRange", this line needs to be improved
+
+    countItems(productsFilteredArray.length)
+
     for (let i = 0; i < productsFilteredArray.length; i++) {
       var listItem = document.createElement("div");
+      listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
-          <div class="product">
-              <h1>${productsFilteredArray[i].name}</h1>
-              <img src=${productsFilteredArray[i].image} alt="">
-              <p>${productsFilteredArray[i].product}</p>
-              <p>Price $${productsFilteredArray[i].price}</p>
-              <p>Color: ${productsFilteredArray[i].color}</p>
-              <button type="button" class="btn btn-primary">Buy</button>
-          </div>
+            <div>
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-warning"> NEW </span>
+                        <img src=${productsFilteredArray[i].image} alt="${productsFilteredArray[i].name}" width="100%">
+                        <h3 class="h4">${productsFilteredArray[i].name.toUpperCase()}</h3>
+                        <h3 class="h6">Product type: ${productsFilteredArray[i].product}</h3>
+                        <h3 class="h6">Color: ${productsFilteredArray[i].color}</h3>
+                        <h3 class="h6">Price: $${productsFilteredArray[i].price}</h3>
+                    </div>
+                    <button href="#" class="btn btn-block btn-primary">Show info</button>
+                </figure>
+            </div>
       `;
       document.getElementById("filteredProductsByRange").appendChild(listItem);
+      addEventClick(listItem, i, productsFilteredArray); // TEST MODAL
     }
 
   }
@@ -198,21 +223,30 @@ function filterByOption(optionValue) {
 
   function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
-    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByOptions"></div>` // Creating "filteredProductsByOptions", this line needs to be improved
-    
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByOptions" class="row"></div>` // Creating "filteredProductsByOptions", this line needs to be improved
+
+    countItems(productsFilteredArray.length)
+
     for (let i = 0; i < productsFilteredArray.length; i++) {
       var listItem = document.createElement("div");
+      listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
-          <div class="product">
-              <h1>${productsFilteredArray[i].name}</h1>
-              <img src=${productsFilteredArray[i].image} alt="">
-              <p>${productsFilteredArray[i].product}</p>
-              <p>Price $${productsFilteredArray[i].price}</p>
-              <p>Color: ${productsFilteredArray[i].color}</p>
-              <button type="button" class="btn btn-primary">Buy</button>
-          </div>
+            <div>
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-warning"> NEW </span>
+                        <img src=${productsFilteredArray[i].image} alt="${productsFilteredArray[i].name}" width="100%">
+                        <h3 class="h4">${productsFilteredArray[i].name.toUpperCase()}</h3>
+                        <h3 class="h6">Product type: ${productsFilteredArray[i].product}</h3>
+                        <h3 class="h6">Color: ${productsFilteredArray[i].color}</h3>
+                        <h3 class="h6">Price: $${productsFilteredArray[i].price}</h3>
+                    </div>
+                    <button href="#" class="btn btn-block btn-primary">Show info</button>
+                </figure>
+            </div>
       `;
       document.getElementById("filteredProductsByOptions").appendChild(listItem);
+      addEventClick(listItem, i, productsFilteredArray); // TEST MODAL
     }
 
   }
@@ -239,21 +273,30 @@ function filterByName(value) {
 
   function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
-    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByOptions"></div>` // Creating "filteredProductsByOptions", this line needs to be improved
-    
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByOptions" class="row"></div>` // Creating "filteredProductsByOptions", this line needs to be improved
+
+    countItems(productsFilteredArray.length)
+
     for (let i = 0; i < productsFilteredArray.length; i++) {
       var listItem = document.createElement("div");
+      listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
-          <div class="product">
-              <h1>${productsFilteredArray[i].name}</h1>
-              <img src=${productsFilteredArray[i].image} alt="">
-              <p>${productsFilteredArray[i].product}</p>
-              <p>Price $${productsFilteredArray[i].price}</p>
-              <p>Color: ${productsFilteredArray[i].color}</p>
-              <button type="button" class="btn btn-primary">Buy</button>
-          </div>
+            <div>
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-warning"> NEW </span>
+                        <img src=${productsFilteredArray[i].image} alt="${productsFilteredArray[i].name}" width="100%">
+                        <h3 class="h4">${productsFilteredArray[i].name.toUpperCase()}</h3>
+                        <h3 class="h6">Product type: ${productsFilteredArray[i].product}</h3>
+                        <h3 class="h6">Color: ${productsFilteredArray[i].color}</h3>
+                        <h3 class="h6">Price: $${productsFilteredArray[i].price}</h3>
+                    </div>
+                    <button href="#" class="btn btn-block btn-primary">Show info</button>
+                </figure>
+            </div>
       `;
       document.getElementById("filteredProductsByOptions").appendChild(listItem);
+      addEventClick(listItem, i, productsFilteredArray); // TEST MODAL
     }
 
   }
@@ -267,7 +310,7 @@ function makeListAgain() {
 }
 
 
-// Sorting the products by proce in descending order 
+// Sorting the products by proce in descending order
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
 function getInputFromUserFilterDescending() {
@@ -280,21 +323,30 @@ function getInputFromUserFilterDescending() {
   // console.log(copyProductsArray);
   function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
-    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByDescending"></div>` // Creating "filteredProductsByDescending", this line needs to be improved
-    
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByDescending" class="row"></div>` // Creating "filteredProductsByDescending", this line needs to be improved
+
+    countItems(copyProductsArray.length)
+
     for (let i = 0; i < copyProductsArray.length; i++) {
       var listItem = document.createElement("div");
+      listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
-          <div class="product">
-              <h1>${copyProductsArray[i].name}</h1>
-              <img src=${copyProductsArray[i].image} alt="">
-              <p>${copyProductsArray[i].product}</p>
-              <p>Price $${copyProductsArray[i].price}</p>
-              <p>Color: ${copyProductsArray[i].color}</p>
-              <button type="button" class="btn btn-primary">Buy</button>
-          </div>
+            <div>
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-warning"> NEW </span>
+                        <img src=${copyProductsArray[i].image} alt="${copyProductsArray[i].name}" width="100%">
+                        <h3 class="h4">${copyProductsArray[i].name.toUpperCase()}</h3>
+                        <h3 class="h6">Product type: ${copyProductsArray[i].product}</h3>
+                        <h3 class="h6">Color: ${copyProductsArray[i].color}</h3>
+                        <h3 class="h6">Price: $${copyProductsArray[i].price}</h3>
+                    </div>
+                    <button href="#" class="btn btn-block btn-primary">Show info</button>
+                </figure>
+            </div>
       `;
       document.getElementById("filteredProductsByDescending").appendChild(listItem);
+      addEventClick(listItem, i, copyProductsArray); // TEST MODAL
     }
 
   }
@@ -315,21 +367,30 @@ function getInputFromUserFilterAscending() {
   // console.log(copyProductsArray);
   function render() {
     document.getElementById("allProducts").remove("allProducts"); // Removing "allProducts"
-    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByAscending"></div>` // Creating "filteredProductsByDescending", this line needs to be improved
-    
+    document.getElementById("showProducts").innerHTML = `<div id="filteredProductsByAscending" class="row"></div>` // Creating "filteredProductsByDescending", this line needs to be improved
+
+    countItems(copyProductsArray.length)
+
     for (let i = 0; i < copyProductsArray.length; i++) {
       var listItem = document.createElement("div");
+      listItem.setAttribute("class", "col-sm-12 col-md-6 col-lg-4");
       listItem.innerHTML = `
-          <div class="product">
-              <h1>${copyProductsArray[i].name}</h1>
-              <img src=${copyProductsArray[i].image} alt="">
-              <p>${copyProductsArray[i].product}</p>
-              <p>Price $${copyProductsArray[i].price}</p>
-              <p>Color: ${copyProductsArray[i].color}</p>
-              <button type="button" class="btn btn-primary">Buy</button>
-          </div>
+            <div>
+                <figure class="card card-product-grid">
+                    <div class="img-wrap">
+                        <span class="badge badge-warning"> NEW </span>
+                        <img src=${copyProductsArray[i].image} alt="${copyProductsArray[i].name}" width="100%">
+                        <h3 class="h4">${copyProductsArray[i].name.toUpperCase()}</h3>
+                        <h3 class="h6">Product type: ${copyProductsArray[i].product}</h3>
+                        <h3 class="h6">Color: ${copyProductsArray[i].color}</h3>
+                        <h3 class="h6">Price: $${copyProductsArray[i].price}</h3>
+                    </div>
+                    <button href="#" class="btn btn-block btn-primary">Show info</button>
+                </figure>
+            </div>
       `;
       document.getElementById("filteredProductsByAscending").appendChild(listItem);
+      addEventClick(listItem, i, copyProductsArray); // TEST MODAL
     }
 
   }
@@ -337,13 +398,16 @@ function getInputFromUserFilterAscending() {
 
 }
 
+function countItems(number) {
+  document.getElementById('numberItems').innerHTML = `${number} Items found`
+}
+
 
 // TEST MODAL:
 
-function addEventClick($element, i) { //modal
+function addEventClick($element, i, array) { //modal
   $element.addEventListener('click', () => {
-     console.log(`click ${productsArray[i].name}, ${productsArray[i].product}, ${productsArray[i].price}, ${productsArray[i].color}`);
-    
+      console.log(`click ${array[i].name}, ${array[i].product}, ${array[i].price}, ${array[i].color}`);
   });
 };
 

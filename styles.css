@@ -1,0 +1,4 @@
+.product {
+   flex-flow: wrap;
+   overflow: auto;
+}
