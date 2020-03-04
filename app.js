@@ -310,7 +310,7 @@ function makeListAgain() {
 }
 
 
-// Sorting the products by proce in descending order
+// Sorting the products by price in descending order
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
 function getInputFromUserFilterDescending() {
@@ -354,7 +354,7 @@ function getInputFromUserFilterDescending() {
 
 }
 
-// Sorting the products by proce in ascending order 
+// Sorting the products by price in ascending order
 // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
 function getInputFromUserFilterAscending() {
