@@ -405,9 +405,9 @@ function countItems(number) {
 
 // TEST MODAL:
 
-function addEventClick($element, i, array) { //modal
+function addEventClick($element, i, arrayData) { //modal
   $element.addEventListener('click', () => {
-      console.log(`click ${array[i].name}, ${array[i].product}, ${array[i].price}, ${array[i].color}`);
+      console.log(`click ${arrayData[i].name}, ${arrayData[i].product}, ${arrayData[i].price}, ${arrayData[i].color}`);
   });
 };
 
