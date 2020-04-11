@@ -1,6 +1,7 @@
 # Ecommerce-Javascript
 
-I made this ecommerce-webpage using Javascript in order to practice some language functions. Here the user can filter by type, name. color, price.
+I made this ecommerce-webpage using Javascript in order to practice some language functions. Here the user can filter by type, name. color, price. Yo can try the demo [here](https://andrescampuzano.github.io/Ecommerce-Javascript/)
+
 
 ## Used:
 
